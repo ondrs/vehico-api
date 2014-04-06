@@ -36,7 +36,6 @@ class CrmApiTest extends \Tester\TestCase
         $password = 'testtest';
 
         $this->crmApi->setCredentials($username, $password);
-        $this->crmApi->signIn();
     }
 
 
@@ -48,7 +47,19 @@ class CrmApiTest extends \Tester\TestCase
 
     function testGetTags()
     {
-        $tags = $this->crmApi->getTags();
+        // catch curl exception if user is not logged in
+        // if not log him in
+        try {
+            $tags = $this->crmApi->getTags();
+        } catch(\ondrs\Vehico\Api\CurlException $e) {
+            if($e->getCode() == 401) {
+                $this->crmApi->signIn();
+                $tags = $this->crmApi->getTags();
+            } else {
+                throw $e;
+            }
+        }
+
         $this->tags = [];
         foreach($tags->data as $t) {
             $this->tags[] = $t->id;

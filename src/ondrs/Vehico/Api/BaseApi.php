@@ -107,7 +107,15 @@ class BaseApi
     {
         try {
             $method = strtoupper($method);
-            return $this->curl->$method($url, $args);
+
+            /** @var \CurlResponse $response */
+            $response = $this->curl->$method($url, $args);
+
+            if($response->headers['Status-Code'] >= 300) {
+                throw new CurlException($response->headers['Status'], $response->headers['Status-Code']);
+            }
+
+            return $response;
         } catch(\CurlException $e) {
             throw new CurlException($e->getMessage(), $e->getCode());
         }
