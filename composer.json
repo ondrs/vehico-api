@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "shuber/curl": "1.0.*@dev",
+        "shuber/curl": "@dev",
         "hampel/json": "1.0.*"
     },
     "require-dev": {
