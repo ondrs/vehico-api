@@ -108,11 +108,6 @@ class BaseApi
         try {
             $method = strtoupper($method);
 
-            if($method == 'POST') {
-                $this->curl->headers['Content-Type'] = 'application/json';
-                $args = Json::encode($args);
-            }
-
             /** @var \CurlResponse $response */
             $response = $this->curl->$method($url, $args);
 
