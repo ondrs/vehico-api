@@ -25,9 +25,9 @@ class CaseEntity extends BaseEntity
     public $price_min = 0;
     public $price_max = 1000000;
 
-    public $brands;
-    public $models;
-    public $keywords;
+    public $brands = [];
+    public $models = [];
+    public $keywords = [];
 
     /** @var array */
     public $tags = [];

@@ -109,9 +109,11 @@ class CrmApiTest extends \Tester\TestCase
 
         $case->customer = $customer->toArray();
 
-        $case->brands = 'Škoda';
-        $case->models = 'Superb;Octavia';
-        $case->keywords = 'hnědá;kombi';
+        $case->brands[] = 'Škoda';
+        $case->models[] = 'Superb';
+        $case->models[] = 'Octavia';
+        $case->keywords[] = 'hnědá';
+        $case->keywords[] = 'kombi';
         $case->name = 'TEST: Chce koupit Škoda Superb nebo Octavia';
         $case->text = '...text... +ěščřžýáíé';
 
