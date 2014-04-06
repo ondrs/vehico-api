@@ -99,7 +99,6 @@ class CrmApiTest extends \Tester\TestCase
         $customer = new \ondrs\Vehico\Api\Crm\Entity\CustomerEntity;
         $customer->name = 'Pepa';
         $customer->surname = 'Tester';
-        $customer->branches_id = 1;
         $customer->email = 'pepa@tester.cz';
         $customer->telephone = 798456123;
         $customer->countries_id = 'CZ';
