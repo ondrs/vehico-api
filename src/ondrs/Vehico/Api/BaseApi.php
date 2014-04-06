@@ -76,7 +76,7 @@ class BaseApi
      */
     public function signIn()
     {
-        $response = $this->curl->post($this->url . '/public/sign/in', array(
+        $response = $this->request('POST', $this->url . '/public/sign/in', array(
             'username' => $this->username,
             'password' => $this->password,
         ));
@@ -91,8 +91,26 @@ class BaseApi
      */
     public function signOut()
     {
-        $response = $this->curl->post($this->url . '/public/sign/out', array(''));
+        $response = $this->request('POST', $this->url . '/public/sign/out', array(''));
         return $this->getResponseBody($response);
+    }
+
+
+    /**
+     * @param string $method
+     * @param string $url
+     * @param array|null $args
+     * @return \CurlResponse
+     * @throws CurlException
+     */
+    protected function request($method, $url, $args = NULL)
+    {
+        try {
+            $method = strtoupper($method);
+            return $this->curl->$method($url, $args);
+        } catch(\CurlException $e) {
+            throw new CurlException($e->getMessage(), $e->getCode());
+        }
     }
 
 

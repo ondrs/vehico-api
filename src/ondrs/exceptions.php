@@ -20,3 +20,9 @@ class JsonException extends VehicoException
 
 }
 
+
+class CurlException extends VehicoException
+{
+
+}
+

@@ -23,7 +23,7 @@ class CrmApi extends BaseApi
      */
     public function saveCase(CaseEntity $caseEntity)
     {
-        $response = $this->curl->post($this->url . '/private/crm/cases', $caseEntity->toArray());
+        $response = $this->request('POST', $this->url . '/private/crm/cases', $caseEntity->toArray());
         return $this->getResponseBody($response);
     }
 
@@ -34,7 +34,7 @@ class CrmApi extends BaseApi
      */
     public function getCase($caseId)
     {
-        $response = $this->curl->get($this->url . '/private/crm/cases/' . $caseId);
+        $response = $this->request('GET', $this->url . '/private/crm/cases/' . $caseId);
         return $this->getResponseBody($response);
     }
 
@@ -45,7 +45,7 @@ class CrmApi extends BaseApi
      */
     public function deleteCase($caseId)
     {
-        $response = $this->curl->delete($this->url . '/private/crm/cases/' . $caseId);
+        $response = $this->request('DELETE', $this->url . '/private/crm/cases/' . $caseId);
         return $this->getResponseBody($response);
     }
 
@@ -56,7 +56,7 @@ class CrmApi extends BaseApi
      */
     public function saveCustomer(CustomerEntity $customerEntity)
     {
-        $response = $this->curl->post($this->url . '/private/crm/customers', $customerEntity->toArray());
+        $response = $this->request('POST', $this->url . '/private/crm/customers', $customerEntity->toArray());
         return $this->getResponseBody($response);
     }
 
@@ -67,7 +67,7 @@ class CrmApi extends BaseApi
      */
     public function getCustomer($customerId)
     {
-        $response = $this->curl->get($this->url . '/private/crm/customers/' . $customerId);
+        $response = $this->request('GET', $this->url . '/private/crm/customers/' . $customerId);
         return $this->getResponseBody($response);
     }
 
@@ -78,7 +78,7 @@ class CrmApi extends BaseApi
      */
     public function deleteCustomer($customerId)
     {
-        $response = $this->curl->delete($this->url . '/private/crm/customers/' . $customerId);
+        $response = $this->request('DELETE', $this->url . '/private/crm/customers/' . $customerId);
         return $this->getResponseBody($response);
     }
 
@@ -88,7 +88,7 @@ class CrmApi extends BaseApi
      */
     public function getTags()
     {
-        $response = $this->curl->get($this->url . '/private/crm/tags');
+        $response = $this->request('GET', $this->url . '/private/crm/tags');
         return $this->getResponseBody($response);
     }
 
@@ -98,7 +98,7 @@ class CrmApi extends BaseApi
      */
     public function getSources()
     {
-        $response = $this->curl->get($this->url . '/private/crm/sources');
+        $response = $this->request('GET', $this->url . '/private/crm/sources');
         return $this->getResponseBody($response);
     }
 
@@ -108,7 +108,7 @@ class CrmApi extends BaseApi
      */
     public function getSellers()
     {
-        $response = $this->curl->get($this->url . '/private/crm/sellers');
+        $response = $this->request('GET', $this->url . '/private/crm/sellers');
         return $this->getResponseBody($response);
     }
 
@@ -120,7 +120,7 @@ class CrmApi extends BaseApi
      */
     public function updateCaseTags($caseId, array $tags)
     {
-        $response = $this->curl->post($this->url . '/private/crm/cases/' . $caseId . '/tags', array(
+        $response = $this->request('POST', $this->url . '/private/crm/cases/' . $caseId . '/tags', array(
             'tags' => $tags,
         ));
         return $this->getResponseBody($response);
@@ -134,7 +134,7 @@ class CrmApi extends BaseApi
      */
     public function updateCaseFollowers($caseId, array $followers)
     {
-        $response = $this->curl->post($this->url . '/crm/cases/' . $caseId . '/followers', array(
+        $response = $this->request('POST', $this->url . '/crm/cases/' . $caseId . '/followers', array(
             'followers' => $followers,
         ));
         return $this->getResponseBody($response);
