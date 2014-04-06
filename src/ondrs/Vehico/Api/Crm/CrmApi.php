@@ -23,6 +23,16 @@ class CrmApi extends BaseApi
      */
     public function saveCase(CaseEntity $caseEntity)
     {
+        $mapper = function($item) {
+            return [
+                'text' => $item,
+            ];
+        };
+
+        $caseEntity->brands = array_map($mapper, $caseEntity->brands);
+        $caseEntity->models = array_map($mapper, $caseEntity->models);
+        $caseEntity->keywords = array_map($mapper, $caseEntity->keywords);
+
         $response = $this->request('POST', $this->url . '/private/crm/cases', $caseEntity->toArray());
         return $this->getResponseBody($response);
     }
