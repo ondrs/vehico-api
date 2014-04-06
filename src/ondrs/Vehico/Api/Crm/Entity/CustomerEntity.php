@@ -30,6 +30,5 @@ class CustomerEntity extends BaseEntity
     public $postal;
     public $id_no;
     public $countries_id;
-    public $branches_id;
     public $type;
 } 
