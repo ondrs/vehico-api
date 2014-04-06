@@ -14,8 +14,6 @@ use ondrs\Vehico\BaseEntity;
 class CaseEntity extends BaseEntity
 {
     public $id;
-    public $branches_id;
-    public $users_id;
     public $crm_sources_id;
     public $vehicles_id;
     public $name;

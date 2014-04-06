@@ -30,5 +30,5 @@ class CustomerEntity extends BaseEntity
     public $postal;
     public $id_no;
     public $countries_id;
-    public $type;
+    public $type = self::TYPE_INDIVIDUAL;
 } 
