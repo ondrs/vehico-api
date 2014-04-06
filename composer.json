@@ -12,7 +12,7 @@
     }],
     "require": {
         "php": ">=5.4.0",
-        "shuber/curl": "dev-master",
+        "shuber/curl": "1.0.*@dev",
         "hampel/json": "1.0.*"
     },
     "require-dev": {
