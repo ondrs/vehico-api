@@ -23,77 +23,34 @@ class BaseApi
     protected $curl;
 
     /** @var string */
-    protected $url = 'http://git.vehico.cz:8082/api';
+    protected $url = 'https://www.vehico.cz';
 
     /** @var string */
-    protected $username;
+    protected $apiKey;
 
-    /** @var string */
-    protected $password;
 
 
     /**
      * @param string $tempDir
      * @param string|null $url
      */
-    public function __construct($tempDir, $url = NULL)
+    public function __construct($tempDir, $apiKey, $url = NULL)
     {
         $this->tempDir = $tempDir;
+        $this->apiKey = $apiKey;
 
         $this->curl = new \Curl;
 
+
         $this->curl->options['ssl_verifyPeer'] = FALSE;
-        $this->curl->options['cookieSession'] = TRUE;
-
         $this->curl->headers['Accept'] = 'application/json';
-
-        $this->curl->cookie_file = $this->tempDir . '/vehico.cookie';
-
+        $this->curl->headers['X-VEHICO-API-KEY'] = $apiKey;
 
         if($url !== NULL) {
             $this->url = $url;
         }
     }
 
-
-    /**
-     * @param string $username
-     * @param string $password
-     * @return $this
-     */
-    public function setCredentials($username, $password)
-    {
-        $this->username = $username;
-        $this->password = $password;
-
-        return $this;
-    }
-
-
-    /**
-     * @return \stdClass
-     * @throws JsonException
-     */
-    public function signIn()
-    {
-        $response = $this->request('POST', $this->url . '/public/sign/in', array(
-            'username' => $this->username,
-            'password' => $this->password,
-        ));
-
-        return $this->getResponseBody($response);
-    }
-
-
-    /**
-     * @return \stdClass
-     * @throws JsonException
-     */
-    public function signOut()
-    {
-        $response = $this->request('POST', $this->url . '/public/sign/out', array(''));
-        return $this->getResponseBody($response);
-    }
 
 
     /**

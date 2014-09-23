@@ -14,7 +14,6 @@ use ondrs\Vehico\BaseEntity;
 class CaseEntity extends BaseEntity
 {
     public $id;
-    public $crm_sources_id;
     public $vehicles_id;
     public $name;
     public $text;
@@ -29,6 +28,9 @@ class CaseEntity extends BaseEntity
     public $models = [];
     public $keywords = [];
 
+    public $crm_sources_id;
+    public $source;
+
     /** @var array */
     public $tags = [];
     public $followers = [];
@@ -36,4 +38,6 @@ class CaseEntity extends BaseEntity
     /** @var array from CustomerEntity */
     public $customer;
 
+    // API user NULL id
+    public $users_id = NULL;
 } 

@@ -30,40 +30,20 @@ class CrmApiTest extends \Tester\TestCase
 
     function setUp()
     {
-        $this->crmApi = new \ondrs\Vehico\Api\Crm\CrmApi(TEMP_DIR);
+        /*
+        $apiKey = 'kpdfbrqlw1zuqe5v2ba3uuhqhm30bhmjib7cdbk4q0o49u5qzyxpxp5ip4l3k8go7fk5uspd0z8nqcqoix2s3zbejwg6tn65xm8ctu5cmo24jzs801rsch09t6mmie6pdd95gm4qbpjpnifur5b1h5zgq4b09ts8akl6yd1nxlgeq1ownaf7e3swean1nxbgf9qknsitl6rlohedt7p0v4ld0fjfn54abe19g5cglubi9jbrgaahf53luhienyy';
+        $this->crmApi = new \ondrs\Vehico\Api\Crm\CrmApi(TEMP_DIR, $apiKey, 'https://localhost/vehico/vehico-server/www/api');
+        */
 
-        $username = 'vehico';
-        $password = 'testtest';
+        $apiKey = 'iicnm5wrrj13110ldalyixmr2d030hhmzcqsxp6ot28wa87z78tbv76e17f08d1jq5s1pbz91ad1t36jk8mk4vy7dt4x3en3l45hyhrji240c0piqf0f1nmyb98jm1n0e9whhroip9wxzewhl35ueqd98rkmzxxrhtfg65i6lbaa1v2jyxdqyd3kbwpu6wavo59zaviihi2h2fleaf93jsjl86oy34refsq58qgc2pr7kwawkei2lolhwgvm6tm';
+        $this->crmApi = new \ondrs\Vehico\Api\Crm\CrmApi(TEMP_DIR, $apiKey, 'https://test.vehico.cz/api');
 
-        $this->crmApi->setCredentials($username, $password);
-    }
-
-
-    function tearDown()
-    {
-        //$this->crmApi->signOut();
     }
 
 
     function testGetTags()
     {
-        // catch curl exception if user is not logged in
-        // if not log him in
-        try {
-            $tags = $this->crmApi->getTags();
-        } catch(\ondrs\Vehico\Api\CurlException $e) {
-            if($e->getCode() == 401) {
-                $this->crmApi->signIn();
-                $tags = $this->crmApi->getTags();
-            } else {
-                throw $e;
-            }
-        }
-
-        $this->tags = [];
-        foreach($tags->data as $t) {
-            $this->tags[] = $t->id;
-        }
+        $tags = $this->crmApi->getTags();
 
         Assert::true(TRUE);
     }
@@ -105,7 +85,6 @@ class CrmApiTest extends \Tester\TestCase
         $customer->type = \ondrs\Vehico\Api\Crm\Entity\CustomerEntity::TYPE_INDIVIDUAL;
 
         $case = new \ondrs\Vehico\Api\Crm\Entity\CaseEntity;
-        $case->branches_id = 1;
 
         $case->customer = $customer->toArray();
 
@@ -119,7 +98,7 @@ class CrmApiTest extends \Tester\TestCase
 
         $case->tags = $this->tags;
         $case->followers = $this->sellers;
-        $case->crm_sources_id = $this->sourceId;
+        $case->source = 'testovací zdroj';
 
         $response = $this->crmApi->saveCase($case);
 
