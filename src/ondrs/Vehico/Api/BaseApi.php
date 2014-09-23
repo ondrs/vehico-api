@@ -42,6 +42,7 @@ class BaseApi
         $this->curl = new \Curl;
 
 
+        $this->curl->options['SSL_VERIFYHOST'] = FALSE;
         $this->curl->options['ssl_verifyPeer'] = FALSE;
         $this->curl->headers['Accept'] = 'application/json';
         $this->curl->headers['X-VEHICO-API-KEY'] = $apiKey;
