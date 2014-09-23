@@ -23,10 +23,13 @@ class BaseApi
     protected $curl;
 
     /** @var string */
-    protected $url = 'https://www.vehico.cz';
+    protected $apiKey;
 
     /** @var string */
-    protected $apiKey;
+    protected $url;
+
+    /** @var string */
+    const API_URL = 'https://www.vehico.cz/api';
 
 
 
@@ -47,9 +50,7 @@ class BaseApi
         $this->curl->headers['Accept'] = 'application/json';
         $this->curl->headers['X-VEHICO-API-KEY'] = $apiKey;
 
-        if($url !== NULL) {
-            $this->url = $url;
-        }
+        $this->url = $url ? $url : self::API_URL;
     }
 
 
