@@ -54,11 +54,10 @@ class BaseApi
     }
 
 
-
     /**
-     * @param string $method
-     * @param string $url
-     * @param array|null $args
+     * @param $method
+     * @param $url
+     * @param null $args
      * @return \CurlResponse
      * @throws CurlException
      */
@@ -70,8 +69,11 @@ class BaseApi
             /** @var \CurlResponse $response */
             $response = $this->curl->$method($url, $args);
 
-            if($response->headers['Status-Code'] >= 300 && $response->headers['Status-Code'] < 400) {
-                $this->request($method, $response->headers['Location'], $args);
+            if ($response->headers['Status-Code'] >= 300 && $response->headers['Status-Code'] < 400) {
+
+                return $method === 'GET'
+                    ? $this->request($method, $response->headers['Location'])
+                    : $this->request($method, $response->headers['Location'], $args);
             }
 
             if($response->headers['Status-Code'] >= 400) {
