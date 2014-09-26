@@ -42,7 +42,7 @@ class Fleet extends BaseApi
         }
 
         if ($sort !== NULL) {
-            $vars['sort'] = $sort;
+            $vars['sort'] = (int)$sort;
         }
 
         if ($filter !== NULL) {
