@@ -73,7 +73,7 @@ class BaseApi
             $response = $this->curl->$method($url, $args);
 
 
-            if($response->headers['Status-Code'] >= 300) {
+            if($response->headers['Status-Code'] >= 400) {
                 throw new CurlException($response->headers['Status'], $response->headers['Status-Code']);
             }
 
