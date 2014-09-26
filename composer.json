@@ -24,7 +24,7 @@
   "require": {
     "php": ">=5.4.0",
     "shuber/curl": "dev-master",
-    "nette/utils": "2.3.*@dev"
+    "hampel/json": "1.0.*"
   },
   "require-dev": {
     "nette/tester": "@dev"

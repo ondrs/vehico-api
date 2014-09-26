@@ -9,10 +9,9 @@
 namespace ondrs\Vehico\Api;
 
 
+use Hampel\Json\Json;
+use Hampel\Json\JsonException as HampelJsonException;
 
-
-use Nette\Utils\Json;
-use Nette\Utils\JsonException as NetteJsonException;
 
 class BaseApi
 {
@@ -93,7 +92,7 @@ class BaseApi
     {
         try {
             return Json::decode($response->body);
-        } catch(NetteJsonException $e) {
+        } catch(HampelJsonException $e) {
             throw new JsonException($e->getMessage(), $e->getCode());
         }
     }
