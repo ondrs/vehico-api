@@ -38,7 +38,7 @@ class Fleet extends BaseApi
         ];
 
         if ($star !== NULL) {
-            $vars['star'] = (int)$star;
+            $vars['star'] = $star;
         }
 
         if ($sort !== NULL) {
