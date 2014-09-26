@@ -8,13 +8,9 @@
 
 namespace ondrs\Vehico\Api\Fleet;
 
-
-
 use ondrs\Vehico\Api\BaseApi;
-use ondrs\Vehico\Api\Crm\Entity\CaseEntity;
-use ondrs\Vehico\Api\Crm\Entity\CustomerEntity;
 
-class FleetApi extends BaseApi
+class Fleet extends BaseApi
 {
 
     const
@@ -41,15 +37,15 @@ class FleetApi extends BaseApi
             'page' => $page,
         ];
 
-        if($star !== NULL) {
+        if ($star !== NULL) {
             $vars['tag'] = $tag;
         }
 
-        if($sort !== NULL) {
+        if ($sort !== NULL) {
             $vars['sort'] = $sort;
         }
 
-        if($filter !== NULL) {
+        if ($filter !== NULL) {
             $vars['filter'] = $filter;
         }
 
@@ -71,5 +67,4 @@ class FleetApi extends BaseApi
     }
 
 
-
-} 
+}

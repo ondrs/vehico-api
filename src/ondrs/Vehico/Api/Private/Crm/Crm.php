@@ -14,7 +14,7 @@ use ondrs\Vehico\Api\BaseApi;
 use ondrs\Vehico\Api\Crm\Entity\CaseEntity;
 use ondrs\Vehico\Api\Crm\Entity\CustomerEntity;
 
-class CrmApi extends BaseApi
+class Crm extends BaseApi
 {
 
     /**

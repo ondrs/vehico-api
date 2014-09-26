@@ -1,15 +1,14 @@
 <?php
 
-use ondrs\Vehico\Api\BaseApi;
 use Tester\Assert;
 
-require_once __DIR__ . '/../../../../bootstrap.php';
+require_once __DIR__ . '/../../../../../bootstrap.php';
 
 
-class CrmApiTest extends \Tester\TestCase
+class CrmTest extends \Tester\TestCase
 {
 
-    /** @var \ondrs\Vehico\Api\Crm\CrmApi */
+    /** @var \ondrs\Vehico\Api\Crm\Crm */
     private $crmApi;
 
     /** @var array  */
@@ -36,7 +35,7 @@ class CrmApiTest extends \Tester\TestCase
         */
 
         $apiKey = 'iicnm5wrrj13110ldalyixmr2d030hhmzcqsxp6ot28wa87z78tbv76e17f08d1jq5s1pbz91ad1t36jk8mk4vy7dt4x3en3l45hyhrji240c0piqf0f1nmyb98jm1n0e9whhroip9wxzewhl35ueqd98rkmzxxrhtfg65i6lbaa1v2jyxdqyd3kbwpu6wavo59zaviihi2h2fleaf93jsjl86oy34refsq58qgc2pr7kwawkei2lolhwgvm6tm';
-        $this->crmApi = new \ondrs\Vehico\Api\Crm\CrmApi(TEMP_DIR, $apiKey, 'https://test.vehico.cz/api');
+        $this->crmApi = new \ondrs\Vehico\Api\Crm\Crm(TEMP_DIR, $apiKey, 'https://test.vehico.cz/api');
 
     }
 
@@ -140,4 +139,4 @@ class CrmApiTest extends \Tester\TestCase
 
 }
 
-id(new CrmApiTest)->run();
+id(new CrmTest)->run();
