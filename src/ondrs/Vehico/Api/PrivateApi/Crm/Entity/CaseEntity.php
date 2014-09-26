@@ -6,7 +6,7 @@
  * Time: 13:49
  */
 
-namespace ondrs\Vehico\Api\Crm\Entity;
+namespace ondrs\Vehico\Api\PrivateApi\Crm\Entity;
 
 
 use ondrs\Vehico\BaseEntity;

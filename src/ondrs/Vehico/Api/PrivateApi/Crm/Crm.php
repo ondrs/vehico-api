@@ -6,13 +6,14 @@
  * Time: 11:11
  */
 
-namespace ondrs\Vehico\Api\Crm;
+namespace ondrs\Vehico\Api\PrivateApi\Crm;
+
 
 
 
 use ondrs\Vehico\Api\BaseApi;
-use ondrs\Vehico\Api\Crm\Entity\CaseEntity;
-use ondrs\Vehico\Api\Crm\Entity\CustomerEntity;
+use ondrs\Vehico\Api\PrivateApi\Crm\Entity\CaseEntity;
+use ondrs\Vehico\Api\PrivateApi\Crm\Entity\CustomerEntity;
 
 class Crm extends BaseApi
 {

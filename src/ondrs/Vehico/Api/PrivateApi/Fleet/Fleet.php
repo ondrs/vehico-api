@@ -6,7 +6,7 @@
  * Time: 11:11
  */
 
-namespace ondrs\Vehico\Api\Fleet;
+namespace ondrs\Vehico\Api\PrivavateApi\Fleet;
 
 use ondrs\Vehico\Api\BaseApi;
 
