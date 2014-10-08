@@ -97,7 +97,11 @@ class CrmTest extends \Tester\TestCase
 
         $case->tags = $this->tags;
         $case->followers = $this->sellers;
-        $case->source = 'testovací zdroj';
+
+        $source = new \ondrs\Vehico\Api\PrivateApi\Crm\Entity\SourceEntity();
+        $source->name = 'test source';
+
+        $case->source = $source;
 
         $response = $this->crmApi->saveCase($case);
 

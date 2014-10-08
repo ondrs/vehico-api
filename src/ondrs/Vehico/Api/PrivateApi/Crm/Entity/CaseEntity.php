@@ -29,7 +29,7 @@ class CaseEntity extends BaseEntity
     public $keywords = [];
 
     public $crm_sources_id;
-    public $source;
+    public $source = [];
 
     /** @var array */
     public $tags = [];
