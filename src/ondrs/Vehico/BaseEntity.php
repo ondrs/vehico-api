@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ondra
- * Date: 6.4.14
- * Time: 13:50
- */
 
 namespace ondrs\Vehico;
 
